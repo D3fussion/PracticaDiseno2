@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMercado Sánchez - Todo lo que necesitas en un solo lugar</title>
+
+    <!-- Normalizacion del CSS (Para hacer que los navegadores se comporten de manera consistente) -->
+    <!-- <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
+    <link rel="stylesheet" href="src/css/normalize.css"> -->
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="src/css/home.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="src/img/favicon.ico">
+
+    <!-- Font Hind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Hind:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Metadatos -->
+    <meta name="description"
+        content="Nuestra tienda de abarrotes se encarga de brindar productos de calidad a precios accesibles a todo Mexico.">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="author" content="SuperMercado Sanchez">
+    <meta name="keywords" content="SuperMercado, abarrotes, precios accesibles, todo Mexico">
+
+    <!-- TODO: Borrar Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .font-hind {
+                font-family: 'Hind', sans-serif;
+            }
+            header {
+                @apply bg-white w-full h-32 md:h-32 flex flex-col;
+            }
+            .header-bottom {
+                @apply h-8 bg-blue-500;
+            }
+            .header-top {
+                @apply h-[20%] max-h-[20%] bg-gray-300;
+            }
+            .header {
+                @apply h-[80%] max-h-[80%];
+            }
+            .box {
+                @apply max-w-[95%] mx-auto h-full w-full md:max-w-[90%] lg:max-w-[75%];
+            }
+            .box-flex {
+                @apply flex justify-between items-center;
+            }
+            .box-flex-col {
+                @apply md:flex-row flex-col;
+            }
+            .box-flex-1 {
+                @apply flex-1;
+            }
+            .logo img {
+                @apply w-full h-full object-contain;
+            }
+            .logo {
+                @apply h-full cursor-pointer;
+            }
+            .search {
+                @apply flex items-center flex-1 pl-5 md:px-10 h-10;
+            }
+            .search input {
+                @apply w-full border-2 border-gray-200 p-1.5 h-full focus:outline-none focus:ring-0;
+            }
+            .menu {
+                @apply h-full flex items-center border-t-2 md:border-t-0 border-gray-200 w-full md:w-auto justify-center;
+            }
+            .menu ul {
+                @apply flex gap-5 text-sm md:text-base font-medium;
+            }
+            .menu ul li {
+                @apply cursor-pointer active:text-orange-800 hover:text-orange-500 transition-colors duration-300 ease-in-out;
+            }
+            .search_logo {
+                @apply h-[60%] md:h-full w-full;
+            }
+            .search button {
+                @apply bg-orange-500 border-y-2 border-r-2 border-gray-200 box-border py-1.5 w-10 h-10 cursor-pointer active:bg-orange-800 hover:bg-orange-600 transition-colors duration-300 ease-in-out;
+            }
+            .search button svg {
+                @apply h-full w-full text-white;
+            }
+            .banner {
+                @apply w-full h-96 flex items-center justify-center;
+                background-image: 
+                    linear-gradient(to right, rgba(0,0,0,0.2), transparent), 
+                    url('src/img/banner.webp');
+                background-size: cover;
+                background-position: center;
+            }
+            .banner > div {
+                @apply max-w-[90%] grid grid-cols-1 md:grid-cols-2 h-full;
+            }
+            .banner-img {
+                @apply h-full w-full flex items-center justify-center;
+            }
+            .banner-img > img {
+                @apply max-w-[70%] max-h-[70%] object-contain;
+            }
+            .banner-text {
+                @apply flex flex-col justify-center gap-3;
+            }
+            .banner-text h2 {
+                @apply text-lg font-medium text-white;
+            }
+            .banner-text h1 {
+                @apply text-5xl font-bold text-white;
+            }
+            .banner-text p {
+                @apply text-base font-light text-white mb-2;
+            }
+            .banner-text a {
+                @apply text-base font-medium p-2 border-1 border-white text-white w-fit;
+            }
+        
+        }
+    </style>
+
+</head>
+
+<body class="font-hind">
+    <header>
+        <div class="header-top"></div>
+        <div class="header">
+            <div class="box box-flex box-flex-col">
+                <div class="box-flex box-flex-1 search_logo">
+                    <div class="logo">
+                        <img src="src/img/logo.webp" alt="Logo">
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="Buscar">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m21 21-4.34-4.34" />
+                                <circle cx="11" cy="11" r="8" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li>Home</li>
+                        <li>Productos</li>
+                        <li>Contacto</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="header-bottom"></div>
+    </header>
+
+    <main>
+        <div class="banner">
+            <div>
+                <div class="banner-text">
+                    <h2>LOS MEJORES PRODUCTOS</h2>
+                    <h1>SuperMercado Sánchez</h1>
+                    <p>Encuentra todo lo que necesitas en un solo lugar, al mejor precio y con la mejor calidad.</p>
+                    <a href="#">VER PRODUCTOS</a>
+                </div>
+                <div class="banner-img">
+                    <img src="src/img/product-banner.webp" alt="Productos Variados">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
