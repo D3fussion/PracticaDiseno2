@@ -38,7 +38,6 @@ function toast(message, type = 'info') {
 
     container.appendChild(toastEl);
 
-    // Force reflow/layout so transition works
     requestAnimationFrame(() => {
         toastEl.classList.add('show');
     });
@@ -53,6 +52,6 @@ function toast(message, type = 'info') {
 
         setTimeout(() => {
             el.remove();
-        }, 500); // Match transition duration
+        }, 500);
     }
 }
