@@ -16,18 +16,16 @@ function openCart() {
     const cartSidebar = document.getElementById('cartSidebar');
 
     cartOverlay.classList.add('open');
-    // Sidebar animation is handled by CSS via .open class on overlay
 
     cartItemsContainer.innerHTML = '';
 
     if (Object.keys(cart).length === 0) {
-        // Updated text class or kept inline style if simple? Let's use inline for simplicity or specific class
         cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--gray-500); margin-top: 2.5rem;">Tu carrito está vacío</p>';
         return;
     }
 
     fetchProducts().then(data => {
-        cartItemsContainer.innerHTML = '';
+        cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--gray-500); margin-top: 2.5rem;">Tu carrito está vacío</p>';
         let total = 0;
 
         for (const id in cart) {
@@ -63,7 +61,6 @@ function openCart() {
         }
 
         const cartTotal = document.getElementById('cartTotal');
-        // Ensure cart total element exists before setting
         if (cartTotal) {
             cartTotal.textContent = `$${total.toFixed(2)}`;
         }
@@ -72,7 +69,6 @@ function openCart() {
 
 function closeCart() {
     const cartOverlay = document.getElementById('cartOverlay');
-    // const cartSidebar = document.getElementById('cartSidebar'); // Not needed for logic
 
     cartOverlay.classList.remove('open');
 }

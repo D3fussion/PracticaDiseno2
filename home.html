@@ -87,15 +87,17 @@
                         <li class="nav-item">
                             <a href="productos.html">Productos</a>
                         </li>
-                        <li onclick="openCart()" class="nav-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
-                                <circle cx="8" cy="21" r="1" />
-                                <circle cx="19" cy="21" r="1" />
-                                <path
-                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                            </svg>
+                        <li class="nav-item">
+                            <button onclick="openCart()" class="cart-btn" aria-label="Abrir carrito">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
+                                    <circle cx="8" cy="21" r="1" />
+                                    <circle cx="19" cy="21" r="1" />
+                                    <path
+                                        d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                                </svg>
+                            </button>
                         </li>
                     </ul>
                 </nav>
@@ -105,14 +107,14 @@
     </header>
 
     <main>
-        <section name="banner" class="banner">
+        <section aria-label="Banner Principal" class="banner">
             <div class="banner-container">
                 <div class="banner-text-col">
                     <h2 class="banner-subtitle">LOS MEJORES PRODUCTOS</h2>
                     <h1 class="banner-title">SuperMercado Sánchez</h1>
                     <p class="banner-desc">Encuentra todo lo que necesitas en un solo lugar, al
                         mejor precio y con la mejor calidad.</p>
-                    <a href="#" class="banner-btn">VER PRODUCTOS</a>
+                    <a href="productos.html" class="banner-btn">VER PRODUCTOS</a>
                 </div>
                 <div class="banner-img-col">
                     <img src="src/img/product-banner.webp" alt="Productos Variados" class="banner-img">
@@ -120,7 +122,7 @@
             </div>
         </section>
 
-        <section name="ourAdvantages" class="advantages-section">
+        <section aria-label="Nuestras Ventajas" class="advantages-section">
             <div class="advantages-container">
                 <div class="advantages-wrapper">
                     <div class="advantages-grid">
@@ -181,7 +183,7 @@
             </div>
         </section>
 
-        <section name="productos" class="home-products-section">
+        <section aria-label="Productos Destacados" class="home-products-section">
             <div class="section-header">
                 <div class="section-title-wrapper">
                     <h2 class="section-title">Nuestros Productos</h2>
@@ -227,7 +229,7 @@
                     <p class="text-base font-base">Encuentra todo lo que necesitas en un solo lugar, al mejor precio y
                         con la mejor calidad.</p>
                 </div>
-                <div class="footer-col footer-address">
+                <div class="footer-address">
                     <h2 class="text-base font-medium">Direccion: </h2>
                     <p class="text-sm text-gray-300 font-light" style="color: var(--gray-300);">Av. Principal #123,
                         Ciudad, Estado, CP 12345</p>

@@ -1,3 +1,7 @@
+/* 
+    Converti los colores de tailwind a css 
+*/
+
 :root {
     --primary-blue: #1e3a8a;
     --primary-orange: #f97316;
@@ -277,7 +281,7 @@ body {
 .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 2.5rem 0;
 }
 
@@ -312,11 +316,13 @@ body {
 
 .footer-address {
     flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
     .footer-address {
-        flex-direction: row;
+        text-align: left;
     }
 }
 
@@ -618,4 +624,20 @@ body {
 
 .text-blue-500 {
     color: #3b82f6;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn-overlay {
+    border: none;
+    font: inherit;
+    cursor: pointer;
 }

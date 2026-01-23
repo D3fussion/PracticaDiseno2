@@ -88,15 +88,17 @@
                         <li class="nav-item">
                             <a href="productos.html">Productos</a>
                         </li>
-                        <li onclick="openCart()" class="nav-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
-                                <circle cx="8" cy="21" r="1" />
-                                <circle cx="19" cy="21" r="1" />
-                                <path
-                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                            </svg>
+                        <li class="nav-item">
+                            <button onclick="openCart()" class="cart-btn" aria-label="Abrir carrito">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
+                                    <circle cx="8" cy="21" r="1" />
+                                    <circle cx="19" cy="21" r="1" />
+                                    <path
+                                        d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                                </svg>
+                            </button>
                         </li>
                     </ul>
                 </nav>
@@ -127,7 +129,7 @@
                     <p class="text-base font-base">Encuentra todo lo que necesitas en un solo lugar, al mejor precio y
                         con la mejor calidad.</p>
                 </div>
-                <div class="footer-col footer-address">
+                <div class="footer-address">
                     <h2 class="text-base font-medium">Direccion: </h2>
                     <p class="text-sm text-gray-300 font-light" style="color: var(--gray-300);">Av. Principal #123,
                         Ciudad, Estado, CP 12345</p>
