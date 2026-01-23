@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMercado Sánchez - Productos</title>
+
+    <!-- Normalizacion del CSS -->
+    <link rel="stylesheet" href="src/css/normalize.css">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/productos.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="src/img/favicon.ico">
+
+    <!-- Font Hind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Hind:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Metadatos -->
+    <meta name="description"
+        content="Nuestra tienda de abarrotes se encarga de brindar productos de calidad a precios accesibles a todo Mexico.">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="author" content="SuperMercado Sanchez">
+    <meta name="keywords" content="SuperMercado, abarrotes, precios accesibles, todo Mexico">
+
+</head>
+
+<body>
+
+    <div id="toast-container"></div>
+
+    <aside id="cartOverlay" class="cart-overlay" onclick="if(event.target === this) closeCart()">
+
+        <div id="cartSidebar" class="cart-sidebar">
+
+            <div class="cart-header">
+                <p class="font-medium text-lg">Carrito de Compras</p>
+                <button class="cart-close-btn" onclick="closeCart()">✖</button>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+            </div>
+
+            <div class="cart-footer">
+                <p class="font-semibold text-xl">Total:</p>
+                <p id="cartTotal" class="font-semibold text-xl text-orange-600">$0</p>
+            </div>
+        </div>
+
+    </aside>
+
+    <header class="main-header">
+        <div class="header-top-bar"></div>
+        <div class="header-content">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <a href="home.html">
+                            <img src="src/img/logo.png" alt="Logo" class="logo-img">
+                        </a>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" placeholder="Buscar" class="search-input">
+                        <button class="search-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="search-icon">
+                                <path d="m21 21-4.34-4.34" />
+                                <circle cx="11" cy="11" r="8" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <nav class="nav-container">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="productos.html">Productos</a>
+                        </li>
+                        <li onclick="openCart()" class="nav-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
+                                <circle cx="8" cy="21" r="1" />
+                                <circle cx="19" cy="21" r="1" />
+                                <path
+                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                            </svg>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div style="height: 0.75rem; background-color: var(--primary-blue);"></div>
+    </header>
+
+    <main class="min-h-screen" style="min-height: 100vh;">
+
+        <section class="products-hero">
+            <h1 class="text-4xl font-bold text-center text-white">Todos Nuestros Productos</h1>
+        </section>
+
+        <section class="products-container">
+            <div id="productsList" class="products-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="src/img/logo.png" alt="Logo" class="footer-logo">
+                </div>
+                <div class="footer-col footer-text-col">
+                    <p class="text-base font-base">Encuentra todo lo que necesitas en un solo lugar, al mejor precio y
+                        con la mejor calidad.</p>
+                </div>
+                <div class="footer-col footer-address">
+                    <h2 class="text-base font-medium">Direccion: </h2>
+                    <p class="text-sm text-gray-300 font-light" style="color: var(--gray-300);">Av. Principal #123,
+                        Ciudad, Estado, CP 12345</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="src/js/fetchProducts.js"></script>
+<script src="src/js/renderProducts.js"></script>
+<script src="src/js/cartFunctions.js"></script>
+<script src="src/js/toast.js"></script>
+
+</html>

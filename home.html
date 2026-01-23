@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperMercado Sánchez - Todo lo que necesitas en un solo lugar</title>
 
-    <!-- Normalizacion del CSS (Para hacer que los navegadores se comporten de manera consistente) -->
-    <!-- <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
-    <link rel="stylesheet" href="src/css/normalize.css"> -->
+    <!-- Normalizacion del CSS -->
+    <link rel="stylesheet" href="src/css/normalize.css">
 
     <!-- Estilos propios -->
+    <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="src/css/home.css">
+    <link rel="stylesheet" href="src/css/productos.css">
 
     <!-- Favicon -->
     <link rel="icon" href="src/img/favicon.ico">
@@ -33,156 +33,212 @@
     <meta name="author" content="SuperMercado Sanchez">
     <meta name="keywords" content="SuperMercado, abarrotes, precios accesibles, todo Mexico">
 
-    <!-- TODO: Borrar Tailwind -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @layer components {
-            .font-hind {
-                font-family: 'Hind', sans-serif;
-            }
-            header {
-                @apply bg-white w-full h-32 md:h-32 flex flex-col;
-            }
-            .header-bottom {
-                @apply h-8 bg-blue-500;
-            }
-            .header-top {
-                @apply h-[20%] max-h-[20%] bg-gray-300;
-            }
-            .header {
-                @apply h-[80%] max-h-[80%];
-            }
-            .box {
-                @apply max-w-[95%] mx-auto h-full w-full md:max-w-[90%] lg:max-w-[75%];
-            }
-            .box-flex {
-                @apply flex justify-between items-center;
-            }
-            .box-flex-col {
-                @apply md:flex-row flex-col;
-            }
-            .box-flex-1 {
-                @apply flex-1;
-            }
-            .logo img {
-                @apply w-full h-full object-contain;
-            }
-            .logo {
-                @apply h-full cursor-pointer;
-            }
-            .search {
-                @apply flex items-center flex-1 pl-5 md:px-10 h-10;
-            }
-            .search input {
-                @apply w-full border-2 border-gray-200 p-1.5 h-full focus:outline-none focus:ring-0;
-            }
-            .menu {
-                @apply h-full flex items-center border-t-2 md:border-t-0 border-gray-200 w-full md:w-auto justify-center;
-            }
-            .menu ul {
-                @apply flex gap-5 text-sm md:text-base font-medium;
-            }
-            .menu ul li {
-                @apply cursor-pointer active:text-orange-800 hover:text-orange-500 transition-colors duration-300 ease-in-out;
-            }
-            .search_logo {
-                @apply h-[60%] md:h-full w-full;
-            }
-            .search button {
-                @apply bg-orange-500 border-y-2 border-r-2 border-gray-200 box-border py-1.5 w-10 h-10 cursor-pointer active:bg-orange-800 hover:bg-orange-600 transition-colors duration-300 ease-in-out;
-            }
-            .search button svg {
-                @apply h-full w-full text-white;
-            }
-            .banner {
-                @apply w-full h-96 flex items-center justify-center;
-                background-image: 
-                    linear-gradient(to right, rgba(0,0,0,0.2), transparent), 
-                    url('src/img/banner.webp');
-                background-size: cover;
-                background-position: center;
-            }
-            .banner > div {
-                @apply max-w-[90%] grid grid-cols-1 md:grid-cols-2 h-full;
-            }
-            .banner-img {
-                @apply h-full w-full flex items-center justify-center;
-            }
-            .banner-img > img {
-                @apply max-w-[70%] max-h-[70%] object-contain;
-            }
-            .banner-text {
-                @apply flex flex-col justify-center gap-3;
-            }
-            .banner-text h2 {
-                @apply text-lg font-medium text-white;
-            }
-            .banner-text h1 {
-                @apply text-5xl font-bold text-white;
-            }
-            .banner-text p {
-                @apply text-base font-light text-white mb-2;
-            }
-            .banner-text a {
-                @apply text-base font-medium p-2 border-1 border-white text-white w-fit;
-            }
-        
-        }
-    </style>
-
 </head>
 
-<body class="font-hind">
-    <header>
-        <div class="header-top"></div>
-        <div class="header">
-            <div class="box box-flex box-flex-col">
-                <div class="box-flex box-flex-1 search_logo">
-                    <div class="logo">
-                        <img src="src/img/logo.webp" alt="Logo">
+<body>
+
+    <div id="toast-container"></div>
+
+    <aside id="cartOverlay" class="cart-overlay" onclick="if(event.target === this) closeCart()">
+
+        <div id="cartSidebar" class="cart-sidebar">
+
+            <div class="cart-header">
+                <p class="font-medium text-lg">Carrito de Compras</p>
+                <button class="cart-close-btn" onclick="closeCart()">✖</button>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+
+            </div>
+
+            <div class="cart-footer">
+                <p class="font-semibold text-xl">Total:</p>
+                <p id="cartTotal" class="font-semibold text-xl text-orange-600"></p>
+            </div>
+        </div>
+
+    </aside>
+
+    <header class="main-header">
+        <div class="header-top-bar"></div>
+        <div class="header-content">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <img src="src/img/logo.png" alt="Logo" class="logo-img">
                     </div>
-                    <div class="search">
-                        <input type="text" placeholder="Buscar">
-                        <button>
+                    <div class="search-container">
+                        <input type="text" placeholder="Buscar" class="search-input">
+                        <button class="search-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="search-icon">
                                 <path d="m21 21-4.34-4.34" />
                                 <circle cx="11" cy="11" r="8" />
                             </svg>
                         </button>
                     </div>
                 </div>
-                <nav class="menu">
-                    <ul>
-                        <li>Home</li>
-                        <li>Productos</li>
-                        <li>Contacto</li>
+                <nav class="nav-container">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            Home</li>
+                        <li class="nav-item">
+                            <a href="productos.html">Productos</a>
+                        </li>
+                        <li onclick="openCart()" class="nav-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;">
+                                <circle cx="8" cy="21" r="1" />
+                                <circle cx="19" cy="21" r="1" />
+                                <path
+                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                            </svg>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="header-bottom"></div>
+        <div style="height: 0.75rem; background-color: var(--primary-blue);"></div>
     </header>
 
     <main>
-        <div class="banner">
-            <div>
-                <div class="banner-text">
-                    <h2>LOS MEJORES PRODUCTOS</h2>
-                    <h1>SuperMercado Sánchez</h1>
-                    <p>Encuentra todo lo que necesitas en un solo lugar, al mejor precio y con la mejor calidad.</p>
-                    <a href="#">VER PRODUCTOS</a>
+        <section name="banner" class="banner">
+            <div class="banner-container">
+                <div class="banner-text-col">
+                    <h2 class="banner-subtitle">LOS MEJORES PRODUCTOS</h2>
+                    <h1 class="banner-title">SuperMercado Sánchez</h1>
+                    <p class="banner-desc">Encuentra todo lo que necesitas en un solo lugar, al
+                        mejor precio y con la mejor calidad.</p>
+                    <a href="#" class="banner-btn">VER PRODUCTOS</a>
                 </div>
-                <div class="banner-img">
-                    <img src="src/img/product-banner.webp" alt="Productos Variados">
+                <div class="banner-img-col">
+                    <img src="src/img/product-banner.webp" alt="Productos Variados" class="banner-img">
+                </div>
+            </div>
+        </section>
+
+        <section name="ourAdvantages" class="advantages-section">
+            <div class="advantages-container">
+                <div class="advantages-wrapper">
+                    <div class="advantages-grid">
+                        <div class="advantage-item">
+                            <div class="advantage-icon-wrapper">
+                                <div class="advantage-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="advantage-icon">
+                                        <path d="M12 6.528V3a1 1 0 0 1 1-1h0" />
+                                        <path
+                                            d="M18.237 21A15 15 0 0 0 22 11a6 6 0 0 0-10-4.472A6 6 0 0 0 2 11a15.1 15.1 0 0 0 3.763 10 3 3 0 0 0 3.648.648 5.5 5.5 0 0 1 5.178 0A3 3 0 0 0 18.237 21" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="advantage-text-wrapper">
+                                <h3 class="advantage-title">La Mejor Calidad</h3>
+                                <p class="advantage-desc">Productos frescos y de calidad directos a tu casa.</p>
+                            </div>
+                        </div>
+                        <div class="advantage-item">
+                            <div class="advantage-icon-wrapper">
+                                <div class="advantage-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="advantage-icon">
+                                        <rect width="20" height="14" x="2" y="5" rx="2" />
+                                        <line x1="2" x2="22" y1="10" y2="10" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="advantage-text-wrapper">
+                                <h3 class="advantage-title">Pagos en Linea</h3>
+                                <p class="advantage-desc">Paga tus productos de forma segura y rapida.</p>
+                            </div>
+                        </div>
+                        <div class="advantage-item">
+                            <div class="advantage-icon-wrapper">
+                                <div class="advantage-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="advantage-icon">
+                                        <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" />
+                                        <path
+                                            d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" />
+                                        <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="advantage-text-wrapper">
+                                <h3 class="advantage-title">Envios Rapidos</h3>
+                                <p class="advantage-desc">Recibe tus productos en tiempo record y en optimas
+                                    condiciones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section name="productos" class="home-products-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">Nuestros Productos</h2>
+                </div>
+                <div class="section-subtitle-wrapper">
+                    <h3 class="section-subtitle">Los mas vendidos</h3>
+                </div>
+                <div class="slider-controls">
+                    <div class="flex items-center gap-2" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <a href="#slide1" class="slider-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#slide2" class="slider-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="products-slider hide-scroll">
+                <div id="slide1" class="slide"></div>
+                <div id="slide2" class="slide"></div>
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="src/img/logo.png" alt="Logo" class="footer-logo">
+                </div>
+                <div class="footer-col footer-text-col">
+                    <p class="text-base font-base">Encuentra todo lo que necesitas en un solo lugar, al mejor precio y
+                        con la mejor calidad.</p>
+                </div>
+                <div class="footer-col footer-address">
+                    <h2 class="text-base font-medium">Direccion: </h2>
+                    <p class="text-sm text-gray-300 font-light" style="color: var(--gray-300);">Av. Principal #123,
+                        Ciudad, Estado, CP 12345</p>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer>
-
     </footer>
 </body>
+<script src="src/js/fetchProducts.js"></script>
+<script src="src/js/renderProducts.js"></script>
+<script src="src/js/cartFunctions.js"></script>
+<script src="src/js/toast.js"></script>
 
 </html>
